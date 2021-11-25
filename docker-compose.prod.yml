@@ -6,9 +6,9 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.prod
-    command: gunicorn vote.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn vote2.wsgi:application --bind 0.0.0.0:8000
     environment:
-      DJANGO_SETTINGS_MODULE: vote.settings.prod
+      DJANGO_SETTINGS_MODULE: vote2.settings.prod
     env_file:
       - .env
     volumes:
