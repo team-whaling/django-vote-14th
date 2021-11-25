@@ -1,4 +1,5 @@
-from .base import * noqa
+from .base import *  # noqa
+
 
 DEBUG = True
 
@@ -11,4 +12,3 @@ DATABASES = {
         'HOST': env('DATABASE_HOST'),
         'PORT': env('DATABASE_PORT'),
     }
-}
