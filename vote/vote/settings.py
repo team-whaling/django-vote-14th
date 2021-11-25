@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY를 json이용해서 추출해내기.
-secret_file = os.path.join(BASE_DIR, 'mysite/secrets.json')
+secret_file = os.path.join(BASE_DIR, 'vote/secrets.json')
 with open(secret_file) as f:
     secrets = json.loads(f.read())
 
