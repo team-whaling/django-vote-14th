@@ -28,7 +28,7 @@ services:
       DATABASE_PASSWORD: mysql
       DATABASE_PORT: 3306
       DATABASE_HOST: db
-      DJANGO_SETTINGS_MODULE: vote2.settings.dev
+      DJANGO_SETTINGS_MODULE: vote.settings.dev
     restart: always
     ports:
       - "8000:8000"
