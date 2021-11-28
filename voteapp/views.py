@@ -48,11 +48,17 @@ class CandidateViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=True, methods=['post'])
     def vote(self, request, pk=None):
         user = request.user
+        # 유저가 로그인하지 않은 경우
         if not user.is_authenticated:
-            # 로그인하지 않은 경우
             return Response("X", status=status.HTTP_403_FORBIDDEN)
+        # 유저가 로그인한 경우
         else:
-            # 로그인한 경우
+            # 이미 투표한 유저의 경우
+            if user.voted:
+                return Response("Already voted", status=status.HTTP_403_FORBIDDEN)
+            # 유저 투표 여부 체크 및 후보자 득표 수 증가
+            user.voted = True
+            user.save()
             candidate = self.get_object()
             candidate.vote += 1
             candidate.save()
