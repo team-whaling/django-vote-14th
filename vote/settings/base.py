@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'voteapp',
     'rest_framework',
-
+    'rest_framework_simplejwt.token_blacklist',
+    'dj_rest_auth',
+    'dj_rest_auth.registartion',
 ]
 
 REST_FRAMEWORK = {
@@ -51,6 +53,10 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 10,
     'DEFAULT_FILTER_BACKENDS' : ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_AUTHENTICATION_CLASSES' : (
+        'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
 }
 
 MIDDLEWARE = [
