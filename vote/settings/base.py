@@ -40,14 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #myapp
     'voteapp',
+    #django-rest-auth
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-    'rest_auth',
-    'rest_framework.authtoken',
-    'rest_auth.registration',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    #django-allauth
+    'allauth',
+    'allauth.account',
     'allauth.socialaccount',
 ]
+
+SITE_ID = 1
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
