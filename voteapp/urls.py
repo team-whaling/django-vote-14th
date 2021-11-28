@@ -1,9 +1,12 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 from . import views
 
 app_name = 'voteapp'   # 어플리케이션의 이름공간 설정.
-## 제너릭 뷰 사용하기.
+
+router = routers.DefaultRouter()
+router.register(r'candidates', views.CandidateViewSet)
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path('', include(router.urls))
 ]
