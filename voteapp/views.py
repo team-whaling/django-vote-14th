@@ -6,7 +6,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework.decorators import permission_classes, action
 
 
-@permission_classes([AllowAny]) # 인증 필요없다
 class Registartion(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
@@ -22,7 +21,6 @@ class Registartion(generics.GenericAPIView):
         status = status.HTTP_201_CREATED)
 
 
-@permission_classes([AllowAny]) # 인증 필요없다
 class Login(generics.GenericAPIView):
     serializer_class = UserLoginSerializer
 
