@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     #myapp
     'voteapp',
     #django-rest-auth
-    'rest_framework',
-    'rest_framework_simplejwt.token_blacklist',
     'django.contrib.sites',
     'rest_auth',
     'rest_framework.authtoken',
