@@ -5,12 +5,10 @@ from django_filters.rest_framework import DjangoFilterBackend,filters,FilterSet
 from .models import *
 from .serializers import *
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
-from rest_framework.decorators import permission_classes, authentication_classes
 # Need For using JWT
+from rest_framework.decorators import permission_classes, authentication_classes
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework_jwt.serializers import VerifyJSONWebTokenSerializer
-
-# Create your views here.
 @permission_classes([AllowAny]) # 인증 필요없다
 class Registartion(generics.GenericAPIView):
     serializer_class = RegisterSerializer
@@ -42,16 +40,12 @@ class Login(generics.GenericAPIView):
         if user['username'] == "None":
             return Response({"message" : "Login Fail"}, status=status.HTTP_401_UNAUTHORIZED)
 
-        return Response(
             {
+        return Response(
                 "user" : UserSerializer(user, context=self.get_serializer_context()).data,
                 "token" : user['token']
             }
         )
-
 class CandidateViewSet(generics.ListAPIView):
     serializer_class = CandidateSerializer
     queryset = Candidate.objects.all()
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [
-    ]
