@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'voteapp',
     'rest_framework',
+
 ]
 
 REST_FRAMEWORK = {
