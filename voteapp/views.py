@@ -1,14 +1,11 @@
-from django.shortcuts import render
-from rest_framework import status,generics
+from rest_framework import status,generics, viewsets
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend,filters,FilterSet
-from .models import *
 from .serializers import *
-from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
+from rest_framework.permissions import AllowAny
 # Need For using JWT
-from rest_framework.decorators import permission_classes, authentication_classes
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
-from rest_framework_jwt.serializers import VerifyJSONWebTokenSerializer
+from rest_framework.decorators import permission_classes, action
+
+
 @permission_classes([AllowAny]) # 인증 필요없다
 class Registartion(generics.GenericAPIView):
     serializer_class = RegisterSerializer
@@ -23,7 +20,6 @@ class Registartion(generics.GenericAPIView):
             "user" : UserSerializer(user, context=self.get_serializer_context()).data
         },
         status = status.HTTP_201_CREATED)
-
 
 
 @permission_classes([AllowAny]) # 인증 필요없다
@@ -47,6 +43,19 @@ class Login(generics.GenericAPIView):
         )
 
 
-class CandidateViewSet(generics.ListAPIView):
+class CandidateViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CandidateSerializer
     queryset = Candidate.objects.all()
+
+    @action(detail=True, methods=['post'])
+    def vote(self, request, pk=None):
+        user = request.user
+        if not user.is_authenticated:
+            # 로그인하지 않은 경우
+            return Response("X", status=status.HTTP_403_FORBIDDEN)
+        else:
+            # 로그인한 경우
+            candidate = self.get_object()
+            candidate.vote += 1
+            candidate.save()
+            return Response("O")
