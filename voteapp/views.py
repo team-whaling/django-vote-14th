@@ -15,6 +15,4 @@ class CandidateViewSet(generics.ListAPIView):
     queryset = Candidate.object.all()
     filter_backends = [DjangoFilterBackend]
     permission_classes = [
-
     ]
-
