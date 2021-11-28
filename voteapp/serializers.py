@@ -21,10 +21,12 @@ class UserLoginSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=20)
     password = serializers.CharField(max_length=20, write_only=True)
     token = serializers.CharField(max_length=255, read_only=True)
+
     def validate(self, data):
         username = data.get("username")
         password = data.get("password", None)
-        user = authenticate(username= username, password=password)
+
+        user = authenticate(username=username, password=password)
 
         if user is None:
             return {'username' : 'None'}
@@ -46,4 +48,4 @@ class UserLoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'voted')
+        fields = ('id', 'username', 'voted')
