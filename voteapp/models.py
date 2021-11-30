@@ -8,7 +8,7 @@ class User(AbstractUser):
     voted = models.BooleanField(default=False)
 
     class Meta:
-        db_table = 'user'
+        db_table = 'User'
 
 
 class Candidate(models.Model):
@@ -16,5 +16,5 @@ class Candidate(models.Model):
     vote = models.IntegerField(default=0)
 
     class Meta:
-        db_table = 'candidate'
+        db_table = 'Candidate'
         ordering = ['-vote', 'name']
