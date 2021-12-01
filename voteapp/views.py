@@ -42,6 +42,13 @@ class Login(generics.GenericAPIView):
         )
 
 
+class VerifyView(generics.GenericAPIView):
+    def post(self, request):
+        if request.user.is_authenticated:
+            return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
 class CandidateViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CandidateSerializer
     queryset = Candidate.objects.all()
