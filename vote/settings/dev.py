@@ -1,5 +1,5 @@
 from .base import *  # noqa
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
     'default': {

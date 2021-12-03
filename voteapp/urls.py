@@ -11,5 +11,6 @@ router.register(r'candidates', CandidateViewSet)
 urlpatterns = [
     path('register/', Registartion.as_view()),
     path('login/', Login.as_view()),
+    path('user/verify/', VerifyView.as_view()),
     path('', include(router.urls))
 ]
