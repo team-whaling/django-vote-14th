@@ -41,9 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # CORS
-    'django.middleware.common.CommonMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    #
+    'corsheaders',
     'rest_framework',
     'voteapp',
     'django.contrib.sites',
@@ -56,6 +54,7 @@ INSTALLED_APPS = [
 ]
 # 모든 호스트 허용
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 SITE_ID = 1
 
@@ -100,6 +99,8 @@ JWT_AUTH = {
 REST_USE_JWT = True
 
 MIDDLEWARE = [
+    # CORS 설정
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
