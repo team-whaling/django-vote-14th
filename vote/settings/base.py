@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # CORS
+    'corsheaders.middleware.CorsMiddleware',
+    #
     'rest_framework',
     'voteapp',
     'django.contrib.sites',
@@ -50,6 +53,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 ]
+# 모든 호스트 허용
+CORS_ORIGIN_ALLOW_ALL = True
 
 SITE_ID = 1
 
