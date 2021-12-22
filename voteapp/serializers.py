@@ -44,6 +44,7 @@ class UserLoginSerializer(serializers.Serializer):
             )
         return {
             'username': user.username,
+            'voted': user.voted,
             'token': jwt_token
         }
 
