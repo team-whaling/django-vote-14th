@@ -38,7 +38,6 @@ services:
     container_name: certbot
     image: certbot/certbot:latest
     restart: unless-stopped
-    command: certonly --webroot --webroot-path=/var/www/certbot --email myemail@google.com --agree-tos --no-eff-email -d whaling-vote.kro.kr
     volumes:
       - ./certbot/conf:/etc/letsencrypt # nginx 컨테이너에 certbot연결
       - ./certbot/www:/var/www/certbot
