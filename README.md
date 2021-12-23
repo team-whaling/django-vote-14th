@@ -40,4 +40,3 @@ CEOS 14기 팀 웨일링이 제작한 15기 파트장 투표 어플리케이션�
 ## [📑 API document](https://documenter.getpostman.com/view/18244416/UVJcjw8h)
 
 API 문서는 Postman으로 제작되었으며 위 링크에서 확인하실 수 있습니다👍
-
