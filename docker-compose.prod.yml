@@ -27,7 +27,7 @@ services:
       - static:/home/app/web/static
       - media:/home/app/web/media
       - ./certbot/conf:/etc/letsencrypt # 동일한 디렉토리 마운트
-      - ./certvot/www:/var/www/certbot
+      - ./certbot/www:/var/www/certbot
     ports:
       - "80:80"
       - "443:443"
