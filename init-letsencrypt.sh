@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose -f docker-compose.prod.yml)" ]; then
   exit 1
 fi
 
-domains=(whaling-vote.kro.kr)
+domains=(www.whaling-vote.kro.kr)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="sossont1@gmail.com" # Adding a valid address is strongly recommended
