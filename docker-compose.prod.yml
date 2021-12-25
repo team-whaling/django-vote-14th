@@ -26,8 +26,7 @@ services:
     volumes:
       - static:/home/app/web/static
       - media:/home/app/web/media
-      - ../volumes/certbot/conf:/etc/letsencrypt
-      - ../volumes/certbot/www:/var/www/certbot
+      - /etc/letsencrypt/live/www.whaling-vote.kro.kr:/etc/letsencrypt/live/www.whaling-vote.kro.kr
     ports:
       - "80:80"
       - "443:443"
