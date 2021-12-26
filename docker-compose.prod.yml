@@ -33,6 +33,7 @@ services:
     depends_on:
       - web
 
+
 volumes:
   static:
   media:
